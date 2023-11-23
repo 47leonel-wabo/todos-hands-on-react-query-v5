@@ -29,25 +29,17 @@ function App() {
       }}
       gap={1}
     >
-      <GridItem area={"navbar"}>
+      <GridItem area={"navbar"} paddingY={2}>
         <Navbar />
       </GridItem>
-      <GridItem area={"main"} bg="blue.300">
-        Main
-      </GridItem>
+      <GridItem area={"main"}>Main</GridItem>
       <Show above="md">
-        <GridItem area={"aside"} bg="gray.300">
-          Aside
-        </GridItem>
+        <GridItem area={"aside"}>Aside</GridItem>
       </Show>
       <Show above="xl">
-        <GridItem area={"nav"} bg="green.300">
-          Left nav
-        </GridItem>
+        <GridItem area={"nav"}>Left nav</GridItem>
       </Show>
-      <GridItem area={"footer"} bg="red.300">
-        Footer
-      </GridItem>
+      <GridItem area={"footer"}>Footer</GridItem>
     </Grid>
   );
 }
