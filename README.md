@@ -2,6 +2,13 @@
 
 Hands on [chakra](https://chakra-ui.com/) UI library by building simple layout responsive grid system.
 
+## Technologies
+
+- Chakra-UI
+- React 18+
+- React Query
+- Axios
+
 ## Page structure
 
 - sm screen (one column): header, main, and footer
