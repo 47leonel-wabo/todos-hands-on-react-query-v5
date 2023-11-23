@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import todoService from "../services/todo-services";
 import { CanceledError } from "axios";
 
-interface Todo {
+export interface Todo {
   userId: number;
   id: number;
   title: string;
