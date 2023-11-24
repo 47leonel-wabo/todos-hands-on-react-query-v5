@@ -1,18 +1,10 @@
 import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
-import useTodos, { Todo } from "../hooks/useTodos";
-import { useQuery } from "@tanstack/react-query";
-import apiClient from "../services/api-client";
-
-const fetchTodos = () =>
-  apiClient.get<Todo[]>("/todos").then((response) => response.data);
+import useTodosQuery from "../hooks/useTodosQuery";
 
 const TodoList = () => {
-  const { data: todos, error } = useQuery<Todo[], Error>({
-    queryKey: ["todos"],
-    queryFn: fetchTodos,
-  });
+  const { data: todos, error, isLoading } = useTodosQuery();
 
-  // if (isLoading) return <Spinner />;
+  if (isLoading) return <Spinner />;
 
   if (error) return <Text>{error.message}</Text>;
 
