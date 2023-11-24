@@ -7,17 +7,17 @@ class HttpService {
     this.endpoint = endpoint;
   }
 
-  getAll<T>() {
+  getAll<T>(params: any) {
     const controller = new AbortController();
-    const resultPromise = apiClient.get<T>(this.endpoint, {
+    const resultPromise = apiClient(params).get<T>(this.endpoint, {
       signal: controller.signal,
     });
     return { controller, resultPromise };
   }
 
-  getOne<T>(id: number) {
+  getOne<T>(id: number, params: any) {
     const controller = new AbortController();
-    const resultPromise = apiClient.get<T>(this.endpoint + "/" + id, {
+    const resultPromise = apiClient(params).get<T>(this.endpoint + "/" + id, {
       signal: controller.signal,
     });
     return { resultPromise, controller };
