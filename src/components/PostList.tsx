@@ -1,4 +1,11 @@
-import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  SimpleGrid,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import usePostsQuery, { PostQuery } from "../hooks/usePostsQuery";
 import SelectItem from "./SelectItem";
 import { useState } from "react";
@@ -16,9 +23,16 @@ const users = [
   { userId: 10, name: "User 10" },
 ];
 
+const pageSize = 10;
+
 const PostList = () => {
+  const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<PostQuery>({} as PostQuery);
-  const { data: posts, error, isLoading } = usePostsQuery(query);
+  const {
+    data: posts,
+    error,
+    isLoading,
+  } = usePostsQuery({ ...query, page, pageSize });
 
   if (isLoading) return <Spinner />;
 
@@ -26,7 +40,6 @@ const PostList = () => {
 
   return (
     <Box>
-      {}
       <Heading size="2xl" marginY={2}>
         All Posts
       </Heading>
@@ -46,6 +59,22 @@ const PostList = () => {
           </Box>
         ))}
       </SimpleGrid>
+      <Box paddingY={4}>
+        <Button
+          colorScheme="blue"
+          disabled={page === 1}
+          onClick={() => setPage(page - 1)}
+        >
+          Previous
+        </Button>
+        <Button
+          colorScheme="blue"
+          marginX={3}
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </Button>
+      </Box>
     </Box>
   );
 };

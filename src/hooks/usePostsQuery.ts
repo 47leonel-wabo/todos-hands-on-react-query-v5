@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import postServices from "../services/post-services";
+import axios from "axios";
 
 interface Post {
   userId: number;
@@ -19,11 +20,27 @@ const postQueryFn = (params: any) =>
 
 const usePostsQuery = (query: PostQuery) =>
   useQuery<Post[], Error>({
-    queryKey: query.userId ? ["users", query.userId, "posts"] : ["posts"], // any time 'userId' change query is refetch
-    queryFn: () => postQueryFn({ ...query }),
+    queryKey: query.userId ? ["user", "posts", query] : ["posts", query], // any time 'userId' change query is refetch
+    queryFn: () =>
+      postQueryFn({
+        userId: query.userId,
+        _start: (query.page - 1) * query.pageSize,
+        _limit: query.pageSize,
+      }),
+    // queryFn: () =>
+    //   axios
+    //     .get<Post[]>("https://jsonplaceholder.typicode.com/posts", {
+    //       params: {
+    //         _start: (query.page - 1) * query.pageSize,
+    //         _limit: query.pageSize,
+    //         userId: query.userId,
+    //       },
+    //     })
+    //     .then((res) => res.data),
     staleTime: 10 * 1000, // data no longer fresh after 10s
     retry: 2,
     refetchOnReconnect: false,
+    placeholderData: (previousData) => previousData,
     refetchOnWindowFocus: true,
   });
 

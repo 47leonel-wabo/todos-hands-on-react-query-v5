@@ -7,18 +7,7 @@ import theme from "./thems";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-const queryClient = new QueryClient({
-  // GLOBAL LEVEL QUERY CONFIGURATION
-  // defaultOptions: {
-  //   queries: {
-  //     retry: 2,
-  //     staleTime: 10 * 1000, // data is no longer fresh after 10s
-  //     refetchOnReconnect: true,
-  //     refetchOnWindowFocus: true,
-  //     refetchOnMount: true
-  //   }
-  // }
-});
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

@@ -35,8 +35,8 @@ function App() {
         <Navbar />
       </GridItem>
       <GridItem area={"main"} padding={2}>
-        {/* <TodoList /> */}
-        <PostList />
+        <TodoList />
+        {/* <PostList /> */}
       </GridItem>
       <Show above="md">
         <GridItem area={"aside"}>Aside</GridItem>
