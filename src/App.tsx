@@ -2,6 +2,7 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TodoList from "./components/TodoList";
+import PostList from "./components/PostList";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
         <Navbar />
       </GridItem>
       <GridItem area={"main"} padding={2}>
-        <TodoList />
+        {/* <TodoList /> */}
+        <PostList />
       </GridItem>
       <Show above="md">
         <GridItem area={"aside"}>Aside</GridItem>

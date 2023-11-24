@@ -9,6 +9,7 @@ const useTodosQuery = () =>
   useQuery<Todo[], Error>({
     queryKey: ["todos"],
     queryFn: queryTodos,
+    staleTime: 5 * 1000, // data no longer fresh after 5s
   });
 
 export default useTodosQuery;
