@@ -6,7 +6,7 @@ Hands on [chakra](https://chakra-ui.com/) UI library by building simple layout r
 
 - Chakra-UI
 - React 18+
-- React Query
+- React Query (Infinite Query)
 - Axios
 
 ## Page structure
@@ -25,3 +25,6 @@ Hands on [chakra](https://chakra-ui.com/) UI library by building simple layout r
 
 - Very Large Screens
   ![extra large screen](screenshots/xl_screen.png)
+
+- Infinite query on todos
+  ![Todos loaded 10 by 10](screenshots/todos_infinite_query.png)
