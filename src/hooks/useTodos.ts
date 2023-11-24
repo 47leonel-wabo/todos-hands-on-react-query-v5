@@ -16,7 +16,7 @@ const useTodos = () => {
 
   useEffect(() => {
     setLoading(true);
-    const { controller, resultPromise } = todoService.getAll<Todo[]>();
+    const { controller, resultPromise } = todoService.getAll<Todo[]>({});
     resultPromise
       .then(({ data }) => setTodos(data))
       .catch((error) => {
