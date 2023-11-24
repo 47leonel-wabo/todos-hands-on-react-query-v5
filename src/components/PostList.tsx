@@ -1,5 +1,5 @@
 import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
-import usePostsQuery from "../hooks/usePostsQuery";
+import usePostsQuery, { PostQuery } from "../hooks/usePostsQuery";
 import SelectItem from "./SelectItem";
 import { useState } from "react";
 
@@ -17,8 +17,8 @@ const users = [
 ];
 
 const PostList = () => {
-  const [userId, setUserId] = useState<number | undefined>();
-  const { data: posts, error, isLoading } = usePostsQuery(userId);
+  const [query, setQuery] = useState<PostQuery>({} as PostQuery);
+  const { data: posts, error, isLoading } = usePostsQuery(query);
 
   if (isLoading) return <Spinner />;
 
@@ -31,12 +31,12 @@ const PostList = () => {
         All Posts
       </Heading>
       <SelectItem
-        selected={userId}
+        selected={query.userId}
         data={users}
         handleSelect={(data) => {
           console.log(data);
-          if (data) setUserId(parseInt(data));
-          else setUserId(undefined);
+          if (data) setQuery({ ...query, userId: parseInt(data) });
+          else setQuery({ ...query, userId: undefined });
         }}
       />
       <SimpleGrid minChildWidth="120px" spacing={2}>
